@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - HMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">HMS</div>
+        <nav id="mainNav" aria-label="Main navigation"></nav>
+        <div class="user-box" id="userBox"></div>
+    </header>
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <main class="container">
+        <h1 class="page-title">Doctors</h1>
+        <p class="page-subtitle">Doctor profiles and working hours. Only administrators can change them.</p>
+
+        <section class="card hidden" id="formCard">
+            <h2 id="formTitle">Add doctor</h2>
+            <form id="doctorForm" novalidate>
+                <input type="hidden" id="doctorId">
+                <div class="form-grid">
+                    <div class="form-group"><label for="fullName">Full name *</label><input type="text" id="fullName" name="fullName" maxlength="100" required></div>
+                    <div class="form-group"><label for="email">Email *</label><input type="email" id="email" name="email" maxlength="120" required></div>
+                    <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" maxlength="18" required></div>
+                    <div class="form-group"><label for="specialization">Specialization *</label><input type="text" id="specialization" name="specialization" maxlength="100" required></div>
+                    <div class="form-group"><label for="qualification">Qualification</label><input type="text" id="qualification" name="qualification" maxlength="150"></div>
+                    <div class="form-group"><label for="experienceYears">Experience (years) *</label><input type="number" id="experienceYears" name="experienceYears" min="0" max="60" required></div>
+                    <div class="form-group"><label for="availableFrom">Available from *</label><input type="time" id="availableFrom" name="availableFrom" required></div>
+                    <div class="form-group"><label for="availableTo">Available to *</label><input type="time" id="availableTo" name="availableTo" required></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn" id="saveBtn">Save doctor</button>
+                    <button type="button" class="btn secondary" id="cancelBtn">Clear</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="toolbar">
+                <div class="grow form-group"><label for="searchBox">Search</label><input type="search" id="searchBox" placeholder="Name, specialization or email"></div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Name</th><th>Specialization</th><th>Qualification</th><th>Experience</th><th>Hours</th><th>Phone</th><th>Email</th><th id="actionsHead">Actions</th></tr></thead>
+                    <tbody id="doctorBody"><tr><td colspan="8" class="empty">Loading...</td></tr></tbody>
+                </table>
+            </div>
+            <div class="pager" id="pager"></div>
+        </section>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/doctors.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# Starts MySQL and the application together:  docker compose up --build
+# Then open http://localhost:8080
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set it in .env}
+      MYSQL_DATABASE: healthcare_db
+      MYSQL_USER: hms
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set it in .env}
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8081:8080"
+    environment:
+      DB_URL: jdbc:mysql://db:3306/healthcare_db?serverTimezone=UTC
+      DB_USERNAME: hms
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      HMS_ADMIN_PASSWORD: ${HMS_ADMIN_PASSWORD:?set it in .env}
+      HMS_SEED_DEMO: ${HMS_SEED_DEMO:-false}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+
+volumes:
+  db-data:

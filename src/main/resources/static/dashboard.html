@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard | HMS</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header><div class="logo">HMS <span style="font-size:.72rem;font-weight:500;color:#71858d">CARE WORKSPACE</span></div><nav id="mainNav" aria-label="Main navigation"></nav><div class="user-box" id="userBox"></div></header>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div><main class="container">
+<div class="page-heading"><div><h1 class="page-title">Dashboard</h1><p class="page-subtitle" id="welcome">Loading...</p></div><div class="inline-actions"><a class="btn" href="patients.html">Register patient</a><a class="btn secondary" href="appointments.html">Book appointment</a></div></div>
+<div class="stat-grid">
+<div class="card stat-card"><div class="number" id="statPatients">—</div><div class="label">Registered patients</div></div>
+<div class="card stat-card"><div class="number" id="statDoctors">—</div><div class="label">Active doctors</div></div>
+<div class="card stat-card"><div class="number" id="statToday">—</div><div class="label">Appointments today</div></div>
+<div class="card stat-card"><div class="number" id="statScheduled">—</div><div class="label">Scheduled visits</div></div>
+<div class="card stat-card hidden" id="recordsCard"><div class="number" id="statRecords">—</div><div class="label">Medical records</div></div>
+</div>
+<div class="workflow-grid" style="margin-bottom:22px">
+<a class="workflow-card" href="queue.html"><div class="step">01 · Front desk</div><h2>Visit queue →</h2><p>Check patients in, issue a token and update visit progress.</p></a>
+<a class="workflow-card" href="consultation.html"><div class="step">02 · Clinical</div><h2>Consultation →</h2><p>Capture vitals, complaints, findings and follow-up plan.</p></a>
+<a class="workflow-card" href="prescriptions.html"><div class="step">03 · Treatment</div><h2>Prescriptions →</h2><p>Create structured medicine instructions and print a copy.</p></a>
+<a class="workflow-card" href="billing.html"><div class="step">04 · Checkout</div><h2>Billing →</h2><p>Prepare invoices, record payments and view outstanding balances.</p></a>
+</div>
+<div class="card"><h2>Today's appointments</h2><div class="table-wrap"><table><thead><tr><th>Time</th><th>Patient</th><th>Doctor</th><th>Reason</th><th>Status</th></tr></thead><tbody id="todayBody"><tr><td colspan="5" class="empty">Loading appointments…</td></tr></tbody></table></div></div>
+
+</main><script src="js/common.js"></script><script src="js/dashboard.js"></script></body></html>

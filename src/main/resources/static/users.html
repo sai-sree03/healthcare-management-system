@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - HMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">HMS</div>
+        <nav id="mainNav" aria-label="Main navigation"></nav>
+        <div class="user-box" id="userBox"></div>
+    </header>
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <main class="container">
+        <h1 class="page-title">User accounts</h1>
+        <p class="page-subtitle">Create logins and choose what each person is allowed to do.</p>
+
+        <section class="card">
+            <h2>Create user</h2>
+            <form id="userForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group"><label for="username">Username *</label><input type="text" id="username" name="username" maxlength="30" autocomplete="off" required></div>
+                    <div class="form-group"><label for="fullName">Full name *</label><input type="text" id="fullName" name="fullName" maxlength="100" required></div>
+                    <div class="form-group"><label for="password">Password * (8+ characters, letter and digit)</label><input type="password" id="password" name="password" maxlength="100" autocomplete="new-password" required></div>
+                    <div class="form-group"><label for="role">Role *</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select...</option>
+                            <option value="ADMIN">Administrator</option>
+                            <option value="RECEPTIONIST">Receptionist</option>
+                            <option value="DOCTOR">Doctor</option>
+                        </select>
+                    </div>
+                    <div class="form-group hidden" id="doctorWrap"><label for="doctorId">Doctor profile *</label><select id="doctorId" name="doctorId"><option value="">Select...</option></select></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn" id="saveBtn">Create user</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Username</th><th>Name</th><th>Role</th><th>Doctor profile</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody id="userBody"><tr><td colspan="6" class="empty">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/users.js"></script>
+</body>
+</html>

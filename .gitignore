@@ -1,0 +1,24 @@
+# build output
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+*.swp
+
+# OS junk
+.DS_Store
+__MACOSX/
+
+# secrets and local config
+.env
+*.log
+
+# tool-generated folders
+.github/modernize/
+HELP.md
